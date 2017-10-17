@@ -13,10 +13,11 @@ const sleep = require('sleep');
 const config = require('./chappy-config');
 
 let sended = [];
-let cookieJar = request.jar();
+let cookieJar = request.jar(); // Jar needed for some calls, login populate cookie jar, needed for turnWiFi
 
 global.hosts = ObservableArray();
 
+// Listening for changes on our ObservableArray
 global.hosts.on('change', function(event){
   let detected;
 
@@ -68,8 +69,15 @@ loginOnLivebox(function(error, response){
   }, 1500);
 });
 
-
-function sendMail(message, token){
+/**
+* @function sendMail
+*
+* Send an email through SMTP
+*
+* @param {String} message
+*
+*/
+function sendMail(message){
   let transporter = nodemailer.createTransport({
         host: config.smtpHost,
         port: config.smtpPort,
@@ -99,6 +107,7 @@ function sendMail(message, token){
 /**
 * @function watchHosts
 *
+* Ask to livebox for hosts, and compare with global list
 *
 */
 function watchHosts() {
@@ -149,11 +158,10 @@ function loginOnLivebox(callback){
 }
 
 /**
-* @function turnOffWiFi
+* @function turnWifi
 *
-* @param offOrNot : true | false
+* @param onOrNot : true | false
 * @param token : given by loginOnLivebox
-* @param callback : containing return from livebox
 *
 */
 function turnWiFi(onOrNot, token){
