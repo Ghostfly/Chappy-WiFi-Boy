@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "array-includes": "^3.0.3",
+    "nodemailer": "^4.2.0",
+    "observable-array": "^0.0.4",
+    "request": "^2.83.0",
+    "sleep": "^5.1.1"
+  }
+}
