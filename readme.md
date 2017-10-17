@@ -13,3 +13,14 @@ https://www.krackattacks.com/
 ### Todo :
 - Identify by @Mac ?
 - Change password (wip)
+
+## How to use :
+```
+yarn install
+```
+
+```
+node chappy.js
+```
+
+And.. Voilà ! Chappy is monitoring !
